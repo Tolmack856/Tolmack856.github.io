@@ -1,0 +1,115 @@
+body{
+	 --s:67px; /* shape size */
+		--m:4px;  /* line thickness */
+
+		--v1: #fff 119.5deg, #0000 120.5deg;
+		--v2: #000  119.5deg, #0000 120.5deg;
+		background:
+			conic-gradient(at var(--m)              calc(var(--s)*0.5777), transparent 270deg, #000 0deg),
+			conic-gradient(at calc(100% - var(--m)) calc(var(--s)*0.5777), #000 90deg,  transparent 0deg),
+			conic-gradient(from -60deg at 50% calc(var(--s)*0.8662)             , var(--v1)),
+			conic-gradient(from -60deg at 50% calc(var(--s)*0.8662 + 2*var(--m)), var(--v2)),
+			conic-gradient(from 120deg at 50% calc(var(--s)*1.4435 + 3*var(--m)), var(--v1)),
+			conic-gradient(from 120deg at 50% calc(var(--s)*1.4435 +   var(--m)), var(--v2)),
+			linear-gradient(90deg, #fff calc(50% - var(--m)),#000 0 calc(50% + var(--m)), #fff 0);
+		background-size: calc(var(--s) + 2*var(--m)) calc(var(--s)*1.732 + 3*var(--m)); 
+		mix-blend-mode:lighten;
+	}
+	html:before {
+		content: "";
+		position: absolute;
+		inset: 0;
+		background:linear-gradient(90deg,red,blue,green) left/400% 100%;
+		animation:f 2s infinite alternate linear;
+	}
+
+	@keyframes f {
+		100% {background-position:right}
+	}
+}
+
+/* 
+			================= ALL BUTTONS ANIMATIONS =================
+*/
+
+.button, .clicker {
+	/*Disable selection and drag*/
+	-webkit-touch-callout: none;
+		-webkit-user-select: none;
+		-moz-user-select: none;
+		-ms-user-select: none;
+
+	/*Revome buttons borders and otlines*/
+	outline: none;
+	border: none;
+	background-color:#FFFFFF;/*white*/
+
+	/*Transition Animation between hover/active...*/
+	transition: box-shadow 0.3s, background-color 0.3s;
+}
+.button:hover, .clicker:hover{
+	box-shadow: 0 27px 55px 0 rgba(0, 0, 0, 0.3), 0 17px 17px 0 rgba(15, 15, 15, 0.15);/*shadow*/
+}
+.button:active, .clicker:active{
+	/*Shadow, color transition*/
+	transition: box-shadow 0.15s, background-color 0.1s;
+	box-shadow: 0 10px 10px 0 rgba(0, 0, 0, 0.3), 0 20px 20px 0 rgba(0, 0, 0, 0.15);
+	background-color:#F0F0F0;
+}
+
+/*
+			================= SHOP =================
+*/
+.button{
+	width: 200;height: 50;
+	position: absolute;
+	left: 87%;
+	transform: translate(-50%, -50%);
+}
+.button:disabled{
+	background-color: #B3B3B3;
+}
+
+#b1{top:22%}
+#b2{top:32%}
+#b3{top:42%}
+
+
+/* 
+		================= Main Clicker Button =================
+*/
+.clicker {
+	/*Size*/
+	border-radius: 50%;
+	width:200px;
+	height:200px;
+	/* Position */
+	position: absolute;/*                postulat de départ */
+	top: 50%; left: 50%;/*               à 50%/50% du parent référent */
+	transform: translate(-50%, -50%);/*  décalage de 50% de sa propre taille */
+	/* Animation */
+	transition: width 0.3s, height 0.3s;
+}
+.clicker:hover {
+	width:225px;
+	height:225px;
+}
+.clicker:active {
+	transition: width 0.05s, height 0.05s;
+	width:200px;
+	height:200px;
+}
+
+/* 
+			================= Money text Display =================
+*/
+
+.money-text {
+	-webkit-touch-callout: none;
+		-webkit-user-select: none;
+		-moz-user-select: none;
+		-ms-user-select: none;
+	margin-left: 20px;
+	color: #ff0000;
+	font-size: 50;
+}
